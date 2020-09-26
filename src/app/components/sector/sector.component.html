@@ -1,0 +1,50 @@
+<div class="container">
+
+    <!--{{sectors | json}}-->
+
+    <div class="card border-success my-3">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="alert alert-success h6 text-center">
+                        La Liste de Secteurs
+                    </div>
+                    <div class="card border-success">
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let s of sectors">
+                                        <td>{{s.id}}</td>
+                                        <td>{{s.name}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="alert alert-success h6 text-center">
+                        La Creation de Nouveau Secteur
+                    </div>
+                    <div class="card border-success">
+                        <div class="card-body">
+                            <form [formGroup]="Sectorform">
+                                <div class="form-group">
+                                    <label for="name">Nom</label>
+                                    <input formControlName="name" type="text" class="form-control">
+                                </div>
+                                <button class="btn btn-success">Confirmer</button>
+                                <a class="btn btn-outline-success mx-2">Annuler</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

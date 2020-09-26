@@ -1,19 +1,24 @@
 <div class="container">
     <div class="card my-3">
+        <!--{{tasks | json}}-->
         <div class="card-header">Gestion de Tache</div>
         <div class="card-body">
             <button class="btn btn-primary">Create</button>
             <table class="table table-striped my-3">
                 <thead>
+                    <th>#</th>
                     <th>Reservation</th>
+                    <th>Description</th>
                     <th>Date de Debut</th>
                     <th>Charge d'Etude</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Res N3</td>
-                        <td>2019</td>
-                        <td>Redoune</td>
+                    <tr *ngFor="let t of tasks">
+                        <td>{{t.id}}</td>
+                        <td>{{t.name}}</td>
+                        <td>{{t.description}}</td>
+                        <td>{{t.startDate | date}}</td>
+                        <td>{{t.appUser}}</td>
                     </tr>
                 </tbody>
             </table>
