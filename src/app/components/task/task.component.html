@@ -4,24 +4,83 @@
         <div class="card-header">Gestion de Tache</div>
         <div class="card-body">
             <button class="btn btn-primary">Create</button>
-            <table class="table table-striped my-3">
-                <thead>
-                    <th>#</th>
-                    <th>Reservation</th>
-                    <th>Description</th>
-                    <th>Date de Debut</th>
-                    <th>Charge d'Etude</th>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let t of tasks">
-                        <td>{{t.id}}</td>
-                        <td>{{t.name}}</td>
-                        <td>{{t.description}}</td>
-                        <td>{{t.startDate | date}}</td>
-                        <td>{{t.appUser}}</td>
-                    </tr>
-                </tbody>
-            </table>
+
+            <div class="card border-primary my-3">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <form [formGroup]="taskForm" (ngSubmit)="onSaveTask()">
+                                <div class="form-group">
+                                    <label for="name">Réservation</label>
+                                    <input formControlName="name" type="text" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="description">Description</label>
+                                    <textarea formControlName="description" cols="30" rows="3" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="startDate">Début de Traitement</label>
+                                    <input formControlName="startDate" type="datetime-local" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="releaseDate">Fin de Traitement (Estimé)</label>
+                                    <input formControlName="releaseDate" type="datetime-local" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="sector">Secteur</label>
+                                    <select formControlName="sector" class="form-control">
+                                        <option *ngFor="let s of sectorsCurrentProject" [ngValue]="s">
+                                            {{s.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="state">Etat</label>
+                                    <select formControlName="state" class="form-control">
+                                        <option *ngFor="let s of states" [ngValue]="s">{{s.name}}</option>
+                                    </select>
+                                </div>
+                                <label>Type d'etude</label><br>
+                                <div *ngFor="let ts of typeStudys" class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="typeStudy" formControlName="typeStudy" [value]="ts" >
+                                    <label class="form-check-label" for="typeStudy">{{ts.name}}</label>
+                                </div>
+                                <br>
+                                <button class="btn btn-primary mt-2 inline-block">Confirmer</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card border-primary my-3">
+                <div class="card-body">
+                    <table class="table table-striped my-3">
+                        <thead>
+                            <th>#</th>
+                            <th>Reservation</th>
+                            <th>Description</th>
+                            <th>Date de Debut</th>
+                            <th>Secteur</th>
+                            <th>Etat</th>
+                            <th>Type d'Etude</th>
+                            <th>Charge d'Etude</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let t of tasks">
+                                <td>{{t.id}}</td>
+                                <td>{{t.name}}</td>
+                                <td>{{t.description}}</td>
+                                <td>{{t.startDate | date}}</td>
+                                <td>{{t.sector?.name}}</td>
+                                <td>{{t.state?.name}}</td>
+                                <td>{{t.typeStudy?.name}}</td>
+                                <td>{{t.appUser.firstName}} {{t.appUser.lastName}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

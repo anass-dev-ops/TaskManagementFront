@@ -15,11 +15,16 @@
                                 <thead>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>Actions</th>
                                 </thead>
                                 <tbody>
                                     <tr *ngFor="let s of sectors">
                                         <td>{{s.id}}</td>
                                         <td>{{s.name}}</td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-danger">X</button>
+                                            <button class="btn btn-sm btn-outline-primary mx-2">!</button>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -32,7 +37,7 @@
                     </div>
                     <div class="card border-success">
                         <div class="card-body">
-                            <form [formGroup]="Sectorform">
+                            <form [formGroup]="Sectorform" (ngSubmit)="onSaveSectorInProjectId()">
                                 <div class="form-group">
                                     <label for="name">Nom</label>
                                     <input formControlName="name" type="text" class="form-control">

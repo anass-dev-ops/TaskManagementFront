@@ -5,10 +5,10 @@
                 <a routerLink="/" class="nav-link">Homme</a>
             </div>
             <div class="nav-iteam">
-                <a routerLink='/tasks' class="nav-link">Reservations</a>
+                <a  [routerLink]="['/' + projectId +'/tasks']" routerLinkActive="active"  class="nav-link">Reservations</a>
             </div>
             <div class="nav-iteam">
-                <a routerLink="/sectors" class="nav-link">Secteurs</a>
+                <a [routerLink]="['/' + projectId +'/sectors']" class="nav-link">Secteurs</a>
             </div>
             <div class="nav-iteam">
                 <a routerLink class="nav-link">Utilisateurs</a>

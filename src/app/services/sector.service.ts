@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class SectorService {
 
-  host = "http://localhost:8080"
+  host = "http://localhost:8080/"
 
   constructor(private http: HttpClient) { }
 
@@ -14,6 +14,9 @@ export class SectorService {
     return this.http.get( this.host + '/sectors');
   }
   getSectorsByProjectId(projectId: number) {
-    return this.http.get( this.host + '/sectors/' + projectId);
+    return this.http.get( this.host + projectId + '/sectors');
+  }
+  saveSectorInProjectId(sector: any, projectId: number) {
+    return this.http.post( this.host + projectId + '/saveSector', sector);
   }
 }

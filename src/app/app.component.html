@@ -1,7 +1,7 @@
 <div *ngIf="state">
-    <app-navbar></app-navbar>
+    <app-navbar [projectId]="currentProjectId"></app-navbar>
     <div class="container">
-        <button class="btn btn-danger my-3" (click)="state = !state">X</button>
+        <button class="btn btn-danger my-3" (click)="state = !state" [routerLink]="['/']">X</button>
     </div>
     <router-outlet></router-outlet>
 </div>
@@ -46,7 +46,8 @@
                         <p class="card-text">{{p.startDate}}</p>
                         <button class="btn btn-outline-success">Modifier</button>
                         <button class="btn btn-outline-danger mx-2" (click)="onDeleteProject(p.id)">Supprimer</button>
-                        <button class="btn btn-primary my-2" (click)="state = !state">Ouvrir</button>
+                        <!--<button class="btn btn-primary my-2" (click)="state = !state" [routerLink]="['/' + p.id +'/tasks']" >Ouvrir</button>-->
+                        <button class="btn btn-primary my-2" (click)="state = !state; currentProjectId = p.id" >Ouvrir</button>
                     </div>
                 </div>
             </div>

@@ -6,8 +6,8 @@ import { TaskComponent } from './components/task/task.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
-  {path: 'tasks', component: TaskComponent},
-  {path: 'sectors', component: SectorComponent}
+  {path: ':projectId/tasks', component: TaskComponent},
+  {path: ':projectId/sectors', component: SectorComponent}
 ];
 
 @NgModule({

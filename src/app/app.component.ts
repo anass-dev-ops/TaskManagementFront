@@ -15,7 +15,8 @@ export class AppComponent implements OnInit{
   createProjectForm = new FormGroup({
     'name': new FormControl(),
     'startDate': new FormControl()
-  })
+  });
+  currentProjectId = 1;
   constructor(private projectService: ProjectSeviceService) { }
 
   ngOnInit(): void {

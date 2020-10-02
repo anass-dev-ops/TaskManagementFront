@@ -6,11 +6,24 @@ import { Injectable } from '@angular/core';
 })
 export class TaskService {
 
-  host = "http://localhost:8080";
+  host = "http://localhost:8080/";
 
   constructor(private http: HttpClient) { }
 
-  getAllTasks() {
-    return this.http.get( this.host + '/tasks');
+  getTasksByProjectId(projectId: number) {
+    return this.http.get( this.host + projectId + '/tasks');
   }
+
+  saveTask(task: any) {
+    return this.http.post( this.host + 'saveTask', task );
+  }
+
+  getStates() {
+    return this.http.get( this.host + '/states');
+  }
+  /*
+  getTypeStudys() {
+    return this.http.get( this.host + '/typeS');
+  }
+  */
 }
